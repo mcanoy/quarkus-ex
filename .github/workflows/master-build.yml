@@ -30,7 +30,7 @@ jobs:
         image_push_username: ${{ secrets.QUAY_USERNAME }}
         image_push_password: ${{ secrets.QUAY_PASSWORD }}
     - name: Archive code coverage results
-        uses: actions/upload-artifact@v1
-        with:
-          name: code-coverage-report
-          path: target/site/jacoco
+      uses: actions/upload-artifact@v1
+      with:
+        name: code-coverage-report
+        path: target/site/jacoco
