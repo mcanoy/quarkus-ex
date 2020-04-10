@@ -19,7 +19,7 @@ jobs:
       uses: jacobtomlinson/gha-find-replace@0.1.1
       with:
         find: "###VERSION###"
-        replace: "{{ github.sha }}"
+        replace: "${{ github.sha }}"
         include: ".s2i"
     - name: Build with Maven & Quarkus
       run: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true org.jacoco:jacoco-maven-plugin:report
