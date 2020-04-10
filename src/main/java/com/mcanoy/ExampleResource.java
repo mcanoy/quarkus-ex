@@ -15,7 +15,7 @@ public class ExampleResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Counted(name="helloCounter", description="Counts invocations of hello")
-    @Timed(name="heeloTime", description="Timing of hello")
+    @Timed(name="helloTime", description="Timing of hello")
     public String hello(@QueryParam(value="greetings") String greetings) {
         return String.format("hello %s", greetings == null ? "Mitch" : greetings);
     }
