@@ -1,5 +1,7 @@
 # quarkus-ex project
 
+![Publish Image](https://github.com/mcanoy/quarkus-ex/workflows/Publish%20Image/badge.svg)
+
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
