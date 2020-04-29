@@ -1,0 +1,11 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  tag-release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: get the release version
+      run: echo ${{ github.event.release.tag_name }}
