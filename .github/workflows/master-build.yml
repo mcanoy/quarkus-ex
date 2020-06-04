@@ -22,7 +22,7 @@ jobs:
         replace: "${{ github.sha }}"
         include: ".s2i"
     - name: Build with Maven & Quarkus
-      run: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true org.jacoco:jacoco-maven-plugin:report
+      run: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true org.jacoco:jacoco-maven-plugin:report -q
     - uses: redhat-cop/github-actions/s2i@v2
       with:
         base: registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:1.8
