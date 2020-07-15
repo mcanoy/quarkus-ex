@@ -17,4 +17,4 @@ jobs:
         with:
           browser: chrome
           headless: true
-          env: baseUrl=https://lodestar.rht-labs.com
+          env: SSO_URL=${{ secrets.CYPRESS_SSO_URL }} 
