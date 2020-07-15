@@ -14,3 +14,4 @@ jobs:
       uses: cypress-io/github-action@v2
       with:
         browser: chrome
+        env: baseUrl=${env.CYPRESS_BASE_URL},ssoUrl=${env.CYPRESS_SSO_URL},ssoUser=${env.CYPRESS_SSO_USER},ssoPassword=${env.CYPRESS_SSO_PASSWORD}
