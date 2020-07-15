@@ -15,4 +15,9 @@ jobs:
         with:
           browser: chrome
           headless: true
-          env: url=${{ secrets.CYPRESS_BASE_URL }},CYPRESS_BASE_URL=${{ secrets.CYPRESS_BASE_URL }},CYPRESS_SSO_URL=${{ secrets.CYPRESS_SSO_URL }},CYPRESS_SSO_USER=${{ secrets.CYPRESS_SSO_USER }},CYPRESS_SSO_PASSWORD=${{ secrets.CYPRESS_SSO_PASSWORD }}
+          env:  
+            url: ${{ secrets.CYPRESS_BASE_URL }}
+            CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+            CYPRESS_SSO_URL: ${{ secrets.CYPRESS_SSO_URL }}
+            CYPRESS_SSO_USER: ${{ secrets.CYPRESS_SSO_USER }}
+            CYPRESS_SSO_PASSWORD: ${{ secrets.CYPRESS_SSO_PASSWORD }}
