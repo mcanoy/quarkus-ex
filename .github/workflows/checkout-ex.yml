@@ -10,4 +10,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: rht-labs/lodestar-frontend
-        path: testing
+    - name: e2e run
+      uses: cypress-io/github-action@v2
+      with:
+        browser: chrome
