@@ -10,9 +10,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: rht-labs/lodestar-frontend
-      - name: e2e run
+      - name: end-to-end test
         uses: cypress-io/github-action@v2
         with:
           browser: chrome
           headless: true
-          env: HOST=${{ secrets.CYPRESS_BASE_URL }},CYPRESS_BASE_URL=${{ secrets.CYPRESS_BASE_URL }},CYPRESS_SSO_URL=${{ secrets.CYPRESS_SSO_URL }},CYPRESS_SSO_USER=${{ secrets.CYPRESS_SSO_USER }},CYPRESS_SSO_PASSWORD=${{ secrets.CYPRESS_SSO_PASSWORD }}
+          env: url=${{ secrets.CYPRESS_BASE_URL }},CYPRESS_BASE_URL=${{ secrets.CYPRESS_BASE_URL }},CYPRESS_SSO_URL=${{ secrets.CYPRESS_SSO_URL }},CYPRESS_SSO_USER=${{ secrets.CYPRESS_SSO_USER }},CYPRESS_SSO_PASSWORD=${{ secrets.CYPRESS_SSO_PASSWORD }}
