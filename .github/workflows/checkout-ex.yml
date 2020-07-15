@@ -13,5 +13,4 @@ jobs:
     - name: e2e run
       uses: cypress-io/github-action@v2
       with:
-        browser: chrome
         env: CYPRESS_BASE_URL=${{ secrets.CYPRESS_BASE_URL }},CYPRESS_SSO_URL=${{ secrets.CYPRESS_SSO_URL }},CYPRESS_SSO_USER=${{ secrets.CYPRESS_SSO_USER }},CYPRESS_SSO_PASSWORD=${{ secrets.CYPRESS_SSO_PASSWORD }}
