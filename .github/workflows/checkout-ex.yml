@@ -1,3 +1,5 @@
+name: cypress-test
+
 on:
   push:
      branches:
@@ -15,4 +17,4 @@ jobs:
         with:
           browser: chrome
           headless: true
-          env: HOST=https://lodestar.rht-labs.com
+          env: baseUrl=https://lodestar.rht-labs.com
