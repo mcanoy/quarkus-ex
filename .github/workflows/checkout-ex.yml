@@ -11,11 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: rht-labs/lodestar-frontend
+          repository: mcanoy/lodestar-frontend
       - name: end-to-end test
         uses: cypress-io/github-action@v2
         with:
+          record: true
           browser: chrome
           headless: true
           config: baseUrl=${{ secrets.CYPRESS_BASE_URL }}
           env: SSO_URL=${{ secrets.CYPRESS_SSO_URL }},SSO_USER=${{ secrets.CYPRESS_SSO_USER }},SSO_PASSWORD=${{ secrets.CYPRESS_SSO_PASSWORD}}
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
