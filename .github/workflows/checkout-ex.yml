@@ -18,4 +18,4 @@ jobs:
           browser: chrome
           headless: true
           config: baseUrl=${{ secrets.CYPRESS_BASE_URL }}
-          env: SSO_URL=${{ secrets.CYPRESS_SSO_URL }},SSO_USER=${{ secrets.CYPRESS_SSO_USER }},SSO_PASSWORD=${{ CYPRESS_SSO_PASSWORD}}
+          env: SSO_URL=${{ secrets.CYPRESS_SSO_URL }},SSO_USER=${{ secrets.CYPRESS_SSO_USER }},SSO_PASSWORD=${{ secrets.CYPRESS_SSO_PASSWORD}}
