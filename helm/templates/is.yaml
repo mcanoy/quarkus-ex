@@ -1,0 +1,20 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: {{ .Values.name }}
+  name: {{ .Values.name }}
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+  - annotations: null
+    from:
+      kind: DockerImage
+      name: {{ .Values.image.name }}:{{ .Values.image.tag }}
+    importPolicy:
+      scheduled: true
+    name: {{ .Values.image.tag }}
+    referencePolicy:
+      type: Source

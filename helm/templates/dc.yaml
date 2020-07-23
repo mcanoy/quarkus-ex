@@ -1,0 +1,66 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: {{ .Values.name }}
+  name: {{ .Values.name }}
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    app: {{ .Values.name }}
+    deploymentconfig: {{ .Values.name }}
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+        deploymentconfig: {{ .Values.name }}
+    spec:
+      containers:
+      - envFrom:
+        - secretRef:
+            name: {{ .Values.secrets.name }}
+        image: {{ .Values.name }}:{{ .Values.image.tag }}
+        imagePullPolicy: Always
+        name: {{ .Values.name }}
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+          - mountPath: /config
+            name: {{ .Values.configMap.name }}-vol
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: {{ .Values.configMap.name }}
+          name: {{ .Values.configMap.name }}-vol
+  test: false
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
+    imageChangeParams:
+      automatic: true
+      from:
+        kind: ImageStreamTag
+        name: {{ .Values.name }}:{{ .Values.image.tag }}
+      containerNames:
+      - {{ .Values.name }}
+

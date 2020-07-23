@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  {{ .Values.configMap.name }}.yaml: |
+    applications:
+    - application: app_one
+      version: 1.1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configMap.name }}
