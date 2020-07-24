@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: e2e-cleanup
-        image: {{ .Values.cleanupJob.image.name }}:{{ .Values.cleanJob.image.tag }}
+        image: {{ .Values.cleanupJob.image.name }}:{{ .Values.cleanupJob.image.tag }}
         env:
           - name: LOG_LEVEL
             value: "{{ .Values.cleanupJob.env.logLevel }}"
