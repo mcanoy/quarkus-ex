@@ -1,6 +1,10 @@
 name: quarkus-ex
 servicePort: 8080
 
+image:
+  name: quay.io/mcanoy/quarkus-ex
+  tag: latest
+
 cleanupJob:
   image:
     name: quay.io/redhat-cop/gitlab-cleanup
