@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: e2e-cleanup-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: e2e-cleanup
+        image: registry.access.redhat.com/openshift3/python-33-rhel7:latest
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "-H"
+          - "Content-Type: application/json"
+          - "-H"
+          - "charset=UTF-8"
+          - "-d"
+          - "{ \"text\": \"e2e cleanup job sync blah\" }"
+          - "--location"
+          - "{{ .Values.space }}"
+      restartPolicy: Never
+  backoffLimit: 2
+

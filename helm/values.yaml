@@ -10,3 +10,4 @@ secrets:
   three: four
 configMap:
   name: example-cm
+space: https://outer
