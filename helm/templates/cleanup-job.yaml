@@ -10,19 +10,24 @@ spec:
     spec:
       containers:
       - name: e2e-cleanup
-        image: registry.access.redhat.com/openshift3/python-33-rhel7:latest
-        command:
-          - "curl"
-          - "-X"
-          - "POST"
-          - "-H"
-          - "Content-Type: application/json"
-          - "-H"
-          - "charset=UTF-8"
-          - "-d"
-          - "{ \"text\": \"e2e cleanup job sync blah\" }"
-          - "--location"
-          - "{{ .Values.space }}"
+        image: {{ .Values.cleanupJob.image.name }}:{{ .Values.cleanJob.image.tag }}
+        env:
+          - name: LOG_LEVEL
+            value: "{{ .Values.cleanupJob.env.logLevel }}"
+          - name: DELETE_AFTER_HOURS
+            value: "{{ .Values.cleanupJob.env.deleteAfterInHours }}"
+          - name: DRY_RUN
+            value: "{{ .Values.cleanupJob.env.dryRun }}"
+          - name: GITLAB_API_URL
+            value: "{{ .Values.cleanupJob.env.gitlabApiUrl }}"
+          - name: PARENT_GROUP_ID
+            value: "{{ .Values.cleanupJob.env.parentGroupId }}"
+          - name: NOTIFICATION_URL
+            value: "{{ .Values.cleanupJob.env.notificationUrl }}"
+          - name: GIT_TOKEN
+            value: {{ .Values.cleanupJob.env.gitlabToken }}
+          - name: NOTIFICATION_TOKEN
+            value: {{ .Values.cleanupJob.env.notificationToken }}
       restartPolicy: Never
   backoffLimit: 4
 

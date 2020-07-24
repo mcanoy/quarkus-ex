@@ -1,9 +1,23 @@
 name: quarkus-ex
 servicePort: 8080
 
-image:
-  name: quay.io/mcanoy/quarkus-ex
-  tag: latest
+cleanupJob:
+  image:
+    name: quay.io/redhat-cop/gitlab-cleanup
+    tag: v3.11.6
+  env:
+    logLevel: DEBUG
+    deleteAfterInHours: 1
+    dryRun: false
+    gitlabApiUrl: xxxxx
+    parentGroupId: 7775
+    gitlabToken: xxxxx
+  
+exampleJob:
+  image:
+    name: quay.io/mcanoy/quarkus-ex
+    tag: latest
+
 secrets:
   name: quarkus-ex-secrets
   one: two
