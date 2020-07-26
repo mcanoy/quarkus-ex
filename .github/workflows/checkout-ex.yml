@@ -1,9 +1,10 @@
 name: cypress-test
 
-on:
+on: 
   workflow_dispatch:
-    tags:
-      description: "End-to-End Test Run"
+    inputs:
+      tags:
+        description: "End-to-End Test Run"
 
 jobs:
   end-to-end:
