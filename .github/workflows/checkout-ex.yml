@@ -1,12 +1,12 @@
 name: cypress-test
 
 on:
-  push:
-     branches:
-       - nada
+  workflow_dispatch:
+    tags:
+      description: "End-to-End Test Run"
 
 jobs:
-  checkout-example:
+  end-to-end:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
