@@ -28,6 +28,20 @@ spec:
             value: {{ .Values.cleanupJob.env.gitlabToken }}
           - name: NOTIFICATION_TOKEN
             value: {{ .Values.cleanupJob.env.notificationToken }}
+      - name: trigger-giithub
+        image: registry.access.redhat.com/openshift3/python-33-rhel7:latest
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "-H"
+          - "Accept: application/vnd.github.v3+json"
+          - "-H"
+          - "Authorization: token {{ .Values.cleanupJob.env.githubToken }}"
+          - "-d"
+          - "{ \"ref\": \"{{ .Values.cleanupJob.ref }}\" }"
+          - "--location"
+          - "{{ .Values.cleanupJob.env.githubApiUrl }}"
       restartPolicy: Never
-  backoffLimit: 4
+  backoffLimit: 3
 

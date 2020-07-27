@@ -9,6 +9,7 @@ cleanupJob:
   image:
     name: quay.io/redhat-cop/gitlab-cleanup
     tag: v3.11.6
+  ref: master
   env:
     logLevel: DEBUG
     deleteAfterInHours: 1
@@ -16,6 +17,8 @@ cleanupJob:
     gitlabApiUrl: xxxxx
     parentGroupId: 7775
     gitlabToken: xxxxx
+    githubToken: xxxxx
+    githubApiUrl: https://api.github.com/repos/mcanoy/quarkus-ex/actions/workflows/checkout-ex.yml/dispatches
   
 exampleJob:
   image:
