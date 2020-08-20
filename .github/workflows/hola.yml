@@ -14,4 +14,4 @@ jobs:
       env:
         SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
       run: |
-        if [ "parta!partb$bparc" = "SUPER_SECRET" ]; then echo true; else echo false; fi
+        if [ "parta!partb$bparc" = "$SUPER_SECRET" ]; then echo true; else echo false; fi
