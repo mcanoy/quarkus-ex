@@ -14,4 +14,4 @@ jobs:
       env:
         SUPER_SECRET: ${{ secrets.SuperSecret }}
       run: |
-        echo "dont tell anyone $SUPER_SECRET"
+        if [ "parta!partb$bparc" = "SUPER_SECRET" ]; then echo true; else echo false; fi
