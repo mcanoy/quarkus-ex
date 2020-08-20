@@ -1,0 +1,17 @@
+name: what-does-my-secret-look-like
+
+on: 
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: "bEnd-to-bEnd Test Run"
+
+jobs:
+  bend-to-bend:
+    runs-on: ubuntu-latest
+    steps:
+    - shell: bash
+      env:
+        SUPER_SECRET: ${{ secrets.SuperSecret }}
+      run: |
+        echo "dont tell anyone $SUPER_SECRET"
