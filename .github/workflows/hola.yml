@@ -16,3 +16,4 @@ jobs:
       run: |
         if [ "parta!partb$bparc" = "$SUPER_SECRET" ]; then echo true; else echo false; fi
         echo ${#SUPER_SECRET}
+        if [[ $SUPER_SECRET == parta* ]]; then echo true; else echo false; fi
