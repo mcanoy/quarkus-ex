@@ -3,6 +3,7 @@ name: what-does-my-secret-look-like
 on: 
   workflow_dispatch:
     inputs:
+      banana: apple
       tags:
         description: "bEnd-to-bEnd Test Run"
 
@@ -13,9 +14,11 @@ jobs:
     - shell: bash
       env:
         SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
+        BANANA: ${{ github.event.inputs.banana }}
       run: |
         if [[ "parta!partb$bparc" == "$SUPER_SECRET" ]]; then echo true; else echo false; fi
         echo ${#SUPER_SECRET}
         if [[ $SUPER_SECRET == parta!partb$parc* ]]; then echo true; else echo false; fi
         ANOTHER=${SUPER_SECRET#?};
         echo "$ANOTHER"
+        echo "$BANANA"
