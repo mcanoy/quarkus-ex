@@ -3,7 +3,10 @@ name: what-does-my-secret-look-like
 on: 
   workflow_dispatch:
     inputs:
-      banana: apple
+      banana: 
+        description: "yellow fruit"
+        required: false
+        default: "orange"
       tags:
         description: "bEnd-to-bEnd Test Run"
 
