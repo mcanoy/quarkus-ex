@@ -5,7 +5,6 @@ on:
     inputs:
       tags:
         description: "End-to-End Test Run"
-      caller: "n/a"
 
 jobs:
   end-to-end:
