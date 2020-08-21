@@ -36,4 +36,4 @@ jobs:
         run: |
           echo Cypress finished with: ${{ steps.cypress.outcome }}
           echo See results at ${{ steps.cypress.outputs.dashboardUrl }}
-          [ ! -z "$URL" ] && curl $URL -H "Content-Type: application/json" -d '{"message": "${{ steps.cypress.outcome }} dashboardUrl ${{ steps.cypress.outputs.dashboardUrl }} tag ${{ github.event.inputs.cypressTag }}" }'
+          [ ! -z "$URL" ] && curl $URL -H "Content-Type: application/json" -d '{"text": "${{ steps.cypress.outcome }} dashboardUrl ${{ steps.cypress.outputs.dashboardUrl }} tag ${{ github.event.inputs.cypressTag }}" }'
