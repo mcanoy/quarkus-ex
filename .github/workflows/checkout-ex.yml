@@ -3,6 +3,9 @@ name: cypress-test
 on: 
   workflow_dispatch:
     inputs:
+      cypressTag:
+        description: "tag for cypress dashboard"
+        default: "mcanoy"       
       tags:
         description: "End-to-End Test Run"
 
@@ -20,7 +23,7 @@ jobs:
           record: true
           browser: chrome
           headless: true
-          tag: ${{ github.event.inputs.caller }} 
+          tag: ${{ github.event.inputs.cypressTag }} 
           config: baseUrl=${{ secrets.CYPRESS_BASE_URL }}
           env: SSO_URL=${{ secrets.CYPRESS_SSO_URL }},SSO_USER=${{ secrets.CYPRESS_SSO_USER }},SSO_PASSWORD=${{ secrets.CYPRESS_SSO_PASSWORD}},SSO_CLIENT_ID=${{ secrets.CYPRESS_SSO_CLIENT_ID }}
         env:
