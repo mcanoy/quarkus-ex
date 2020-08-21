@@ -30,7 +30,9 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: print dashboard url
+        with: URL=${{ secrets.NOTIFICATION_URL }}
         if: always()
         run: |
           echo Cypress finished with: ${{ steps.cypress.outcome }}
           echo See results at ${{ steps.cypress.outputs.dashboardUrl }}
+          [ ! -z "$URL" ] && curl $URL -H "Content-Type: application/json" -d '{"message": "${{ steps.cypress.outcome }} dashboardUrl ${{ steps.cypress.outputs.dashboardUrl }} tag ${{ github.event.inputs.cypressTag }}" }'
