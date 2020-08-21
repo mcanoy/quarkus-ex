@@ -12,6 +12,8 @@ on:
 jobs:
   end-to-end:
     runs-on: ubuntu-latest
+    env: 
+      URL=${{ secrets.NOTIFICATION_URL }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -30,8 +32,6 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: print dashboard url
-        uses: actions/checkout@v2
-        with: URL=${{ secrets.NOTIFICATION_URL }}
         if: always()
         run: |
           echo Cypress finished with: ${{ steps.cypress.outcome }}
